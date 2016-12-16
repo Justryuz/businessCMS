@@ -3,48 +3,43 @@ if(!defined('inc_access')) {
    die('Direct access not permitted');
 }
 ?>
-        <!-- Footer -->
-        <footer>
-            <div class="footer" id='footer'>
-                
-				<?php 
-                    getNav('Footer','false','left');
-                ?>
 
-            </div>
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="row row_pad">
             <?php
-            echo "<div class='row' id='socialmedia'>";
-                echo "<div class='col-md-12'>";
-    				include 'socialmedia_inc.php';
-                echo "</div>";
-            echo "</div>";
+                getNav('Footer','false','left');
             ?>
-            <div class="row copyright">
-                <div class="col-lg-6 text-left">
-                    <p>Copyright &copy; <?php echo str_replace(':8080','',$_SERVER['HTTP_HOST']."&nbsp;".date("Y"));?></p>
-                </div>
-				<div class="col-lg-6 text-right"><a href="//sayat.me/teklynk" target="_blank"><img style="max-width:60px;" src="core/teklynk_logo.png" border="0"/></a></div>
             </div>
-        </footer>
+            <?php include 'includes/generalinfo_inc.php'; ?>
+        </div>
+        <div id="belowfooter">
+            <div class="container">
+                <div class="socialDiv pull-left hidden-sm hidden-md hidden-lg hidden-xl">
+                    <div class="row">
+                        <?php include 'socialmedia_inc.php'; ?>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="row row_pad">
+                    <p><span id="currentYear">Copyright &copy; <?php echo $_SERVER['HTTP_HOST']."&nbsp;".date("Y"); ?></span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    </div>
-    <!-- /.container -->
-
-    <!-- jQuery CDN -->
-    <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script type="text/javascript" language="javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Scroll to Top -->
+    <a href="#" class="scrollToTop">Scroll To Top</a>
 
     <!-- Script to Activate the Carousel -->
     <script type="text/javascript" language="javascript">
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
+        $('.carousel').carousel({
+            interval: <?php echo $carouselSpeed; ?> //change the speed in config.php
+        })
     </script>
 
 </body>
-
 </html>
 <?php
     //close all db connections

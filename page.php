@@ -3,43 +3,49 @@ define('inc_access', TRUE);
 
 include 'includes/header.php';
 
-	echo "<div class='container'>"; //closed in footer
-	echo "<div class='row row_pad' id='page'>";
+    echo "<div class='grad-orange container-fluid search'>";
+    echo "<div class='container bannerwrapper'>";
+        if ($_GET['loc_id'] == 1) {
+            include 'includes/searchlocations_inc.php';
+        } else {
+            include 'includes/searchpac_inc.php';
+        }
+    echo "</div>";
+    echo "</div>";
 
-		//getPage(); //already being called in functions.php
+	echo "<div class='container'>";
+	echo "<div class='row row_pad content' id='page'>";
 
-		echo "<div class='col-lg-12'>";
-	    echo "<h2 class='page-header page'>".$pageTitle."</h2>";
-	    echo "</div>";
+    echo "<div class='col-lg-12'>";
+    echo "<h1 class='page'>".$pageTitle."</h1>";
+    echo "</div>";
 
-	    if ($pageImage>"") {
-		
-			if ($pageImageAlign=="right") {
-				echo "<div class='col-md-10'>";
-				echo $pageContent;
-				echo "</div>";
-				echo "<div class='col-md-2'>";
-				echo $pageImage;
-				echo "</div>";
-			} else {
-				echo "<div class='col-md-2'>";
-				echo $pageImage;
-				echo "</div>";
-				echo "<div class='col-md-10'>";
-				echo $pageContent;
-				echo "</div>";
-			}
-			
-		} else {
-			echo "<div class='col-lg-12'>";
-		    echo $pageContent;
-		    echo "</div>";
-		}
-		
-		include 'includes/disqus_inc.php';
+    if ($pageImage>"") {
+
+        if ($pageImageAlign=="right") {
+            echo "<div class='col-xs-12 col-md-10'>";
+            echo $pageContent;
+            echo "</div>";
+            echo "<div class='hidden-xs col-md-2'>";
+            echo $pageImage;
+            echo "</div>";
+        } else {
+            echo "<div class='hidden-xs col-md-2'>";
+            echo $pageImage;
+            echo "</div>";
+            echo "<div class='col-xs-12 col-md-10'>";
+            echo $pageContent;
+            echo "</div>";
+        }
+
+    } else {
+        echo "<div class='col-xs-12 col-lg-12'>";
+        echo $pageContent;
+        echo "</div>";
+    }
 
 	echo "</div>";
-	//container is closed in footer
+    echo "</div>";
 
 include 'includes/footer.php';
 ?>
